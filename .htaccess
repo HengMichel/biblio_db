@@ -1,10 +1,8 @@
-#activer la régle de réecriture d'url#
-RewriteEngine on
+# activer la regle de reecriture d'url
+RewriteEngine On
 
-# on vérifie si la requête correspond à un répertoire#
-RewriteCond ${REQUEST_FILENAME} !d
-
-# on vérifie si la requête correspond à un fichier#
-RewriteCond ${REQUEST_FILENAME} !f
-
-RewriteRule (.*) home.php [L]
+# rediriger vers le dossier views
+RewriteRule ^(.*)$ views/$1 [L]
+# le ^ est une expression régulière et fini par $ 
+# . regroupe tous les caractère
+#$1 est une varaible qui stock les valeurs inscrit dans l'url
