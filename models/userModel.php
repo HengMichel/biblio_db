@@ -52,18 +52,16 @@ class User{
             }else if(password_verify($password,$user['password'])){
 
                 // il a taper le bon email et le bon mdp 
-                setcookie("id_user",$user['id_user'],time()+86400,"/","http://localhost/biblio_db",false,true);
+                setcookie("id_user",$user['id_user'],time()+86400,"/","localhost",false,true);
                 // version avec $_SESSION
                 // $_SESSION["id_user"] = $user["id_user"];
 
 
-                setcookie("id_role",$user['role'],time()+86400,"/","http://localhost/biblio_db",false,true);
+                setcookie("user_role",$user['role'],time()+86400,"/","localhost",false,true);
                 // version avec $_SESSION
                 // $_SESSION["id_role"] = $user["role"];
 
                 header("Location: http://localhost/biblio_db/list_book");
-
-
 
             }else{
                 $_SESSION["error_message"] = "mot de passe incorrect ";
@@ -82,8 +80,25 @@ class User{
 
      }
 
-    //  méthode pour emprunter un livre
-     public static function borrow(){
+    //  méthode pour avoir l'historique des emprunters d'un membre
+     public static function borrowLog($idUser){
+
+         // se connecter à la base de donné
+         $db = Database::dbConnect();
+
+        //  préparer la requête
+        $request = $db->prepare("SELECT id_borrow, user_id, book_id, id_book, start_date, end_date, title FROM borrows, books WHERE borrows.book_id = books.id_book AND user_id= ?");
+
+        // éxécuter la requête
+        try {
+            $request->execute(array($idUser));
+
+            // récupérer le résultat dans un tableau
+            $borrowList = $request->fetchAll();
+            return $borrowList;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
 
      }
     
