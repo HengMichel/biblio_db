@@ -1,5 +1,6 @@
 <?php 
 require_once "../models/userModel.php";
+require_once "inc/nav.php";
 $borrowList = User::borrowLog($_COOKIE['id_user']);
 ?>
 
@@ -18,10 +19,10 @@ $borrowList = User::borrowLog($_COOKIE['id_user']);
     <table class="table">
         <thead>
             <tr>
-                <th class="id bg-secondary link-light">Id </th>
-                <th class="startDate bg-secondary link-light">Start Date</th>
-                <th class="enDate bg-secondary link-light">End Date</th>
-                <th class="title2 bg-secondary link-light">Title</th>
+                <th class="id bg-danger-subtle link-success">Id </th>
+                <th class="startDate bg-danger-subtle link-success">Start Date</th>
+                <th class="enDate bg-danger-subtle link-success">End Date</th>
+                <th class="title2 bg-danger-subtle link-success">Title</th>
             </tr>
         </thead>
         <tbody>

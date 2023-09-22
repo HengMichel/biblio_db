@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js">
     <title>header</title>
 </head>
-<body class="bg-primary-subtle">
+<body class="bg-success-subtle">
 
 
     <nav class="navbar navbar-expand-lg bg-danger-subtle mb-5 ">
@@ -18,7 +18,7 @@
                     <a class="navbar-brand  fw-bold link-success" href="http://localhost/biblio_db/add_book">Add Book</a>
                 
                 <?php }else{?>
-                    <a class="navbar-brand  fw-bold bg-success-subtle link-success" href="http://localhost/biblio_db/logs">Log</a>
+                    <a class="navbar-brand  fw-bold bg-success link-warning" href="http://localhost/biblio_db/logs">Log</a>
                     <?php } ?> 
 
             </div>
